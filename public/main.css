@@ -1,0 +1,283 @@
+
+* {
+    box-sizing: border-box;
+}
+html body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin-top: 5rem;
+    background: #fafafa;
+  }
+
+label {
+    font-weight: bold;
+    text-align: center;
+    width: max-content;
+}
+
+.bg-steel {
+    background-color: #5f788a;
+}
+
+.site-header {
+    background-color: #5f788a;
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+
+
+
+.nav ul {
+    margin: 0;
+}
+
+.nav li {
+    display: inline;
+}
+
+.nav a {
+    display: inline-block;
+
+    color: white;
+    text-decoration: none;
+}
+
+.main-nav {
+    text-align: center;
+    font-size: 1.4em;
+    font-weight: normal;
+}
+
+.main-nav li {
+    padding: 0 5%;
+}
+
+.nav a:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.nav-spacing {
+    margin: 0 1em;
+}
+
+
+
+/* div.content-section{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+ */
+.content-section{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    justify-items: center;
+    margin-bottom: 20px;
+}
+
+
+
+
+.container {
+    max-width: 1000px;
+    /* margin: 0 auto; */
+    padding: 0 1.5em;
+}
+
+/* section.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 1.5em;
+} */
+
+.section-header {
+    text-align: center;
+    font-size: 2.5em;
+    margin: 1em;
+    padding-bottom: 0.3em;
+}
+
+.section-header.section-form {
+    margin-bottom: 1em;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+/* .btn {
+    text-align: center;
+    vertical-align: middle;
+    padding: 0.3em;
+    padding-left: 0.7em;
+    padding-right: 0.7em;
+} */
+
+
+th {
+    border-bottom: 1px solid black;
+    text-align: center;
+}
+td {
+    text-align: center;
+}
+.form-row {
+    display: flexbox;
+    margin-bottom: 15px;
+    margin-left: 50px;
+}
+
+
+.form-content {
+    width: 500px; /* Can be in percentage also. */
+    height: auto;
+    margin: auto;
+    padding: 2px;
+    position: relative;
+}
+
+
+
+.row-label {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+}
+
+
+.btn-section {
+    margin-top: 1em;
+    margin-left: 2em;
+    margin-right: 2.7em;
+    padding: 1em;
+    position: relative;
+}
+
+.btn-steel {
+    background-color: #f1f1f1;
+}
+
+.btn-section-general {
+    margin-top: 1em;
+}
+.btn-section-details {
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid black;
+    padding-bottom: 1em;
+}
+
+.btn-spacing {
+    margin-left: 1em;
+    width: max-content;
+}
+.input-integer {
+    max-width: 5em;
+}
+.input-select {
+    max-width: 55%;
+}
+
+/* Projects */
+.search-group{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-column-gap: 1.5em;
+    justify-content: left;
+    width: 50%;
+    margin-bottom: 1em;
+}
+
+
+.section-number {
+    display: inline;
+}
+
+
+.grid-form {
+    display: grid;
+    grid-row-gap: 1.5rem;
+    grid-column-gap: 0.8rem;
+    grid-template-columns:  1fr;
+    margin-top: 2em;
+
+}
+
+.grid-form-row {
+    display: grid;
+    align-items: center;
+    grid-column-gap: 1.5em;
+    margin: 0 0.5em;
+    grid-template-columns: 1fr 2.5fr;
+}
+
+.grid-form-row label {
+    grid-column: 1;
+}
+
+.grid-form-row input,
+.grid-form-row select {
+    grid-column: 2;
+    justify-self: left;
+}
+
+.optional-platdak {
+    display: none;
+}
+
+.optional-platdak label{
+    max-width: 110px;
+    word-wrap: break-word;
+}
+
+
+.form-content {
+    max-width: 900px; 
+    /* width: 100%; */
+    width: fit-content;
+    height: auto;
+    padding: 2px;
+    position: relative;
+    /* justify-content: space-between; */
+}
+
+.form-legend {
+    display: inline-flex;
+    flex-wrap: wrap;
+    column-gap: 3em;
+    justify-content: space-between;
+    justify-self: center;
+    align-items: center;
+    margin: 0 0.9em;
+    width: 90%;
+}
+
+.form-container {
+    width: fit-content;
+}
+
+
+/* Collapsable */
+.collapsible {
+    overflow: hidden;
+    background-color: rgb(255, 253, 253);
+    color: #444;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 0.5em;
+    text-align: left;
+    outline: none;
+    font-size: larger;
+    font-weight: bold;
+    position: relative;
+}
+.content {
+    margin-top: 1em;
+    padding: 0 18px;
+    display: none;
+    overflow: hidden;
+    background-color: rgb(255, 253, 253);
+}
+

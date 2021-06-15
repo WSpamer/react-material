@@ -9,7 +9,9 @@ function Projects() {
     {
       projectId: "1",
       projectName: "Ludzville N1",
+      companyName: "Verdun",
       site: "Ludzville",
+      areaManager: "Ludzville",
       designType: "Gen4"
     }
   ]);

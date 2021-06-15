@@ -7,14 +7,15 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import Icon from '@material-ui/core/Icon';
 
 
 interface Values {
-  projectId: string;
-  projectName: string;
-  site: string;
-  designType: string;
+  projectId: string,
+    projectName: string,
+    companyName: string,
+    site: string,
+    areaManager: string,
+    designType: string,
 }
 
 interface Props {
@@ -45,7 +46,7 @@ const FormProjectCreate: FC<Props> = ({ onSubmit }) => {
         <DialogTitle id="form-dialog-title">Create Project</DialogTitle>
         <DialogContent>
         <Formik
-      initialValues={{ projectId: "", projectName: "", site: "", designType: "" }}
+      initialValues={{ projectId: "", projectName: "", companyName: '', site: "", areaManager:'', designType: "" }}
       onSubmit={(values, { resetForm }) => {
         onSubmit(values);
         resetForm();
@@ -64,8 +65,18 @@ const FormProjectCreate: FC<Props> = ({ onSubmit }) => {
               component={FormFieldText}
             />
             <Field
+              name="companyName"
+              label="Company"
+              component={FormFieldText}
+            />
+            <Field
               name="site"
               label="Site"
+              component={FormFieldText}
+            />
+            <Field
+              name="areaManager"
+              label="Area Manager"
               component={FormFieldText}
             />
             <Field label="Design" name="designType" component={FormFieldText} />

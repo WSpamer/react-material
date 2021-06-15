@@ -14,11 +14,3 @@ const FormFieldText: React.FC<FieldProps & TextFieldProps> = ({
 };
 
 export default FormFieldText;
-{/* <TextField
-        id="projectId"
-        name="projectId"
-        value={formik.values.projectId}
-        label="Project ID"
-        variant="outlined"
-        onChange={formik.handleChange}
-      /> */}

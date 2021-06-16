@@ -1,10 +1,12 @@
-import React from "react";
-import { FC } from "react";
-import { Form, Formik, Field } from "formik";
-import FormFieldText from "./FormFieldText";
 import { Button, DialogActions } from "@material-ui/core";
+import { Field, Form, Formik } from "formik";
+import React, { FC } from "react";
+import * as yup from "yup";
+import { SelectFormField } from "./FormFields/SelectFormField";
+import { TextFormField } from "./FormFields/TextFormField";
+import FormFieldText from "./FormFieldText";
 
-interface Values {
+interface FormValues {
   projectName: string;
   companyName: string;
   site: string;
@@ -12,36 +14,53 @@ interface Values {
   designType: string;
 }
 
+interface SelectValues {
+  label: string;
+  value: string;
+}
+
+const designTypes = [
+  { label: "Platdak", value: "Platdak" },
+  { label: "Gen 4", value: "Gen 4" },
+];
+
+const initialValues: FormValues = {
+  projectName: "",
+  companyName: "",
+  site: "",
+  areaManager: "",
+  designType: "",
+};
+
+let FormSchema = yup.object().shape({
+  projectName: yup.string().required().min(3, "Too Short"),
+  companyName: yup.string().required().min(1),
+  site: yup.string().required(),
+  areaManager: yup.string().required(),
+  designType: yup.string().required(),
+});
 interface Props {
-  onSubmit: (values: Values) => void;
+  onSubmit: (values: FormValues) => void;
   handleClose: () => void;
-  data?: Values;
+  data?: FormValues;
 }
 
 const FormProjectDetails: FC<Props> = ({ onSubmit, handleClose, data }) => {
-  const defaultFormValues = {
-    projectName: "",
-    companyName: "",
-    site: "",
-    areaManager: "",
-    designType: "",
-  };
-
   return (
     <div>
       <Formik
-        initialValues={data ? data : defaultFormValues}
-        onSubmit={(values: Values, { resetForm }) => {
+        initialValues={data ? data : initialValues}
+        validationSchema={FormSchema}
+        onSubmit={(values: FormValues, { validateField }) => {
           onSubmit(values);
-          resetForm();
         }}
       >
-        {({ isSubmitting }) => (
+        {({ values }) => (
           <Form className="grid-form">
             <Field
               name="projectName"
               label="Project Name"
-              component={FormFieldText}
+              component={TextFormField}
             />
             <Field
               name="companyName"
@@ -54,7 +73,12 @@ const FormProjectDetails: FC<Props> = ({ onSubmit, handleClose, data }) => {
               label="Area Manager"
               component={FormFieldText}
             />
-            <Field label="Design" name="designType" component={FormFieldText} />
+            <Field
+              name="designType"
+              label="Design"
+              options={designTypes}
+              component={SelectFormField}
+            />
             <DialogActions>
               <Button onClick={handleClose} color="primary">
                 Cancel

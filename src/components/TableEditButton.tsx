@@ -6,9 +6,11 @@ import DialogProjectEdit from "./DialogProjectEdit";
 interface Props {
   url?: string;
   id?: string;
+  // onUpdate?: (update: boolean) => void;
+  setUpdate: (state: boolean) => void;
 }
 
-const TableEditButton: FC<Props> = ({ url, id }) => {
+const TableEditButton: FC<Props> = ({ url, id, setUpdate }) => {
   const [open, setOpen] = useState(false);
   const [data, setData] = useState();
 
@@ -46,6 +48,7 @@ const TableEditButton: FC<Props> = ({ url, id }) => {
       <DialogProjectEdit
         onSubmit={(data) => {
           updateData(data);
+          setUpdate(true);
         }}
         open={open}
         setOpen={setOpen}

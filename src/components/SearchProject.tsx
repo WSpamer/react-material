@@ -9,7 +9,7 @@ interface Props {
 const SearchProject: FC<Props> = ({ handleClickOpen }) => {
   return (
     <div className="search-group">
-      <SearchField />
+      {/* <SearchField /> */}
       <Button color="primary" className="btn" onClick={handleClickOpen}>
         New Project
       </Button>

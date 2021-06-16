@@ -6,7 +6,7 @@
       "companyName": "Verdun",
       "site": "Ludzville",
       "areaManager": "Herman",
-      "designType": "Gen4"
+      "designType": "Platdak"
     },
     {
       "id": "3",
@@ -14,23 +14,15 @@
       "companyName": "Verdun",
       "site": "Ludzville",
       "areaManager": "Herman",
-      "designType": "Gen4"
+      "designType": "Gen 4"
     },
     {
-      "projectName": "john111",
+      "projectName": "john",
       "companyName": "Tomatoe",
       "site": "Ludzville",
       "areaManager": "Herman",
-      "designType": "gen4",
-      "id": "3nkcORv"
-    },
-    {
-      "projectName": "ff",
-      "companyName": "Tomatoe",
-      "site": "Ludzville",
-      "areaManager": "Herman",
-      "designType": "gen4",
-      "id": "sKRgAsr"
+      "designType": "Gen 4",
+      "id": "DE9R424"
     }
   ]
 }

@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Header = () => {
+const Navbar = () => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
@@ -44,4 +44,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default Navbar;

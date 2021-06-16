@@ -1,10 +1,19 @@
-import { Button } from "@material-ui/core";
+import { Button, createStyles, makeStyles, Theme } from "@material-ui/core";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import React, { FC } from "react";
 import FormProjectDetails from "./FormProjectDetails";
 
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    addBtn: {
+      justifyContent: "center",
+      alignContent: "center",
+      backgroundColor: theme.palette.info.main,
+    },
+  })
+);
 interface Values {
   projectName: string;
   companyName: string;
@@ -20,6 +29,7 @@ interface Props {
 const DialogProjectCreate: FC<Props> = ({ onSubmit }) => {
   const [open, setOpen] = React.useState(false);
 
+  const classes = useStyles();
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -30,14 +40,14 @@ const DialogProjectCreate: FC<Props> = ({ onSubmit }) => {
 
   return (
     <div>
-      <div className="search-group">
+      <div>
         <Button
           variant="contained"
           color="primary"
-          className="btn"
+          className={classes.addBtn}
           onClick={handleClickOpen}
         >
-          New Project
+          Add
         </Button>
       </div>
       <Dialog

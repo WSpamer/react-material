@@ -1,8 +1,9 @@
 import { Container, Paper } from "@material-ui/core";
 import blue from "@material-ui/core/colors/blue";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
-import Header from "./components/Header";
-import Projects from "./components/Projects";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Projects from "./pages/Projects";
 
 const App = () => {
   const theme = createMuiTheme({
@@ -13,17 +14,22 @@ const App = () => {
   });
 
   return (
-    <ThemeProvider theme={theme}>
-      <Paper variant="outlined" style={{ textAlign: "center" }}>
-        <Paper>
-          <Header />
-
-          <Container>
-            <Projects />
-          </Container>
+    <Router>
+      <ThemeProvider theme={theme}>
+        <Paper variant="outlined" style={{ textAlign: "center" }}>
+          <Paper>
+            <Navbar />
+            <Container>
+              <Switch>
+                <Route path="/">
+                  <Projects />
+                </Route>
+              </Switch>
+            </Container>
+          </Paper>
         </Paper>
-      </Paper>
-    </ThemeProvider>
+      </ThemeProvider>
+    </Router>
   );
 };
 

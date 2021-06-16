@@ -1,8 +1,45 @@
-<DialogActions>
-                  <Button onClick={handleClose} color="primary">
-                    Cancel
-                  </Button>
-                  <Button onClick={handleClose} type="submit" color="primary">
-                    Submit
-                  </Button>
-                </DialogActions>
+const [value, setValue] = React.useState("");
+  const classes = useStyles();
+
+	const configSelect = { 
+		select: true,
+		variant: 'outlined',
+		fullwidth: true,
+	}
+
+  const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
+    setValue(event.target.value as string);
+  };
+
+  return (
+    <div>
+      <FormControl className={classes.formControl} variant="outlined">
+        <InputLabel id="demo-simple-select-outlined-label">{label}</InputLabel>
+        <Select
+          labelId="demo-simple-select-outlined-label"
+          id={id}
+          value={value}
+          onChange={handleChange}
+          label={label}
+        >
+          {(!options ? [{ text: "None", value: "" }] : options).map(
+            (option) => (
+              <div key={option.value}>
+                <MenuItem value={option.value}>{option.text}</MenuItem>
+              </div>
+            )
+          )}
+        </Select>
+      </FormControl>
+    </div>
+
+
+    {options.length ? (
+          options.map((option) => (
+            <MenuItem key={option.id} value={option.value}>
+              {option.text}
+            </MenuItem>
+          ))
+        ) : (
+          <MenuItem>loading...</MenuItem>
+        )}

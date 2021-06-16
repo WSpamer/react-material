@@ -1,4 +1,4 @@
-import { makeStyles } from "@material-ui/core/styles";
+import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
@@ -9,40 +9,60 @@ import TableRow from "@material-ui/core/TableRow";
 import TableContainer from "@material-ui/core/TableContainer";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import TableDeleteButton from "./TableDeleteButton";
 import TableEditButton from "./TableEditButton";
 import TablePaginationActions from "./TablePaginationActions";
 import TableProjectsMenu from "./TableProjectsMenu";
 import SearchField from "./SearchField";
+import DialogProjectCreate from "./DialogProjectCreate";
 
 interface Props {
-  rows: Array<{
-    id: string;
-    projectName: string;
-    companyName: string;
-    site: string;
-    areaManager: string;
-    designType: string;
-  }>;
+  // rows: Array<{
+  //   id: string;
+  //   projectName: string;
+  //   companyName: string;
+  //   site: string;
+  //   areaManager: string;
+  //   designType: string;
+  // }>;
+  // onUpdate: (update: boolean) => void;
+  // IsUpdated: boolean;
+  url: string;
 }
 
-const useStyles = makeStyles({
-  table: {
-    minWidth: 600,
-  },
-  cellBtn: {
-    maxWidth: 50,
-    padding: 0.5,
-  },
-});
-
-export default function TableProjects({ rows }: Props) {
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    table: {
+      minWidth: 600,
+    },
+    cellBtn: {
+      maxWidth: 50,
+      padding: 0.5,
+    },
+    toolbarBtn: {
+      maxWidth: 50,
+    },
+    searchSection: {
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "left",
+    },
+    headerBtn: {
+      alignItems: "center",
+      justifyContent: "center",
+      maxWidth: 100,
+    },
+  })
+);
+export default function TableProjects({ url }: Props) {
   const classes = useStyles();
-  const url = "http://localhost:8000/projects";
+  const [projects, setProjects] = useState([]);
+  const [rows, setRows] = useState([]);
+  const [update, setUpdate] = useState(false);
   const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(5);
-  const [filter, setFilter] = useState([]);
+  const [rowsPerPage, setRowsPerPage] = useState(10);
+  const [search, setSearch] = useState(rows);
 
   const emptyRows =
     rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
@@ -61,11 +81,31 @@ export default function TableProjects({ rows }: Props) {
     setPage(0);
   };
 
+  const fetchProjects = (url: string) => {
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => setProjects(data));
+  };
+
+  useEffect(() => {
+    fetchProjects(url);
+    if (update) {
+      setUpdate(false);
+    }
+  }, [url, update]);
+
+  useEffect(() => {
+    setRows(search);
+  }, [search]);
+  useEffect(() => {
+    setRows(projects);
+  }, [projects]);
+
   return (
     <TableContainer>
-      <Toolbar>
+      <Toolbar className={classes.searchSection}>
         <Typography variant="h6">Projects</Typography>
-        <SearchField />
+        <SearchField rows={projects} setSearch={setSearch} />
       </Toolbar>
       <Table className={classes.table}>
         <TableHead>
@@ -76,8 +116,24 @@ export default function TableProjects({ rows }: Props) {
             <TableCell align="center">Area Manager</TableCell>
             <TableCell align="center">Design</TableCell>
             <TableCell align="center">Actions</TableCell>
-            <TableCell align="center" className={classes.cellBtn}></TableCell>
-            <TableCell align="center" className={classes.cellBtn}></TableCell>
+            <TableCell align="center" colSpan={2} className={classes.headerBtn}>
+              <DialogProjectCreate
+                onSubmit={(data) => {
+                  fetch(url, {
+                    method: "POST",
+                    headers: {
+                      Accept: "application/json",
+                      "Content-Type": "application/json; charset=UTF-8",
+                    },
+                    body: JSON.stringify(data),
+                  }).catch((err) => {
+                    console.log(err.message);
+                  });
+
+                  setUpdate(true);
+                }}
+              />
+            </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -99,14 +155,18 @@ export default function TableProjects({ rows }: Props) {
                 align="center"
                 className={classes.cellBtn}
               >
-                <TableEditButton url={url} id={row.id} />
+                <TableEditButton url={url} id={row.id} setUpdate={setUpdate} />
               </TableCell>
               <TableCell
                 size="small"
                 align="center"
                 className={classes.cellBtn}
               >
-                <TableDeleteButton id={row.id} />
+                <TableDeleteButton
+                  url={url}
+                  id={row.id}
+                  setUpdate={setUpdate}
+                />
               </TableCell>
             </TableRow>
           ))}

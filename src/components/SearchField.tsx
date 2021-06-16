@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import {
   createStyles,
   fade,
@@ -52,11 +52,50 @@ const useStyles = makeStyles((theme: Theme) =>
     },
   })
 );
-const SearchField = () => {
+
+interface Props {
+  rows: Array<{
+    id: string;
+    projectName: string;
+    companyName: string;
+    site: string;
+    areaManager: string;
+    designType: string;
+  }>;
+  setSearch: (data: Values[]) => void;
+}
+
+interface Values {
+  projectName: string;
+  companyName: string;
+  site: string;
+  areaManager: string;
+  designType: string;
+}
+
+const SearchField: FC<Props> = ({ rows, setSearch }) => {
   const classes = useStyles();
 
   const handleChange = (event) => {
-    console.log(event.target.value);
+    const text = event.target.value;
+    const data = searchData(text);
+    setSearch(data);
+  };
+  const searchData = (text: string) => {
+    const searchInput = text.toString().toLowerCase().trim();
+    const searchWords = searchInput.split(/\s+/);
+    const searchColumns = ["projectName", "companyName"];
+    var resultsArray =
+      searchInput === ""
+        ? rows
+        : rows.filter((r) => {
+            return searchWords.every((word) => {
+              return searchColumns.some((colName) => {
+                return r[colName].toString().toLowerCase().indexOf(word) !== -1;
+              });
+            });
+          });
+    return resultsArray;
   };
   return (
     <>

@@ -1,25 +1,20 @@
-import React from "react";
-import { Button, TextField } from "@material-ui/core";
+import React, { FC } from "react";
+import { Button } from "@material-ui/core";
+import SearchField from "./SearchField";
 
-function SearchProject() {
+interface Props {
+  handleClickOpen: () => void;
+}
+
+const SearchProject: FC<Props> = ({ handleClickOpen }) => {
   return (
-    <div className="search-group mb-3 w-75">
-      <TextField
-        id="searchInput"
-        label="Search ..."
-        variant="outlined"
-        size="small"
-      />
-
-      <Button
-        variant="contained"
-        color="primary"
-        className="btn-spacing create_project-button"
-      >
+    <div className="search-group">
+      <SearchField />
+      <Button color="primary" className="btn" onClick={handleClickOpen}>
         New Project
       </Button>
     </div>
   );
-}
+};
 
 export default SearchProject;

@@ -1,0 +1,8 @@
+<DialogActions>
+                  <Button onClick={handleClose} color="primary">
+                    Cancel
+                  </Button>
+                  <Button onClick={handleClose} type="submit" color="primary">
+                    Submit
+                  </Button>
+                </DialogActions>

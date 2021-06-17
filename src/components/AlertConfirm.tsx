@@ -26,9 +26,10 @@ interface Props {
   open: boolean;
   setOpen: (state: boolean) => void;
   setConfirm: (state: boolean) => void;
+  title: string;
 }
 
-const AlertConfirm: FC<Props> = ({ open, setOpen, setConfirm }) => {
+const AlertConfirm: FC<Props> = ({ open, setOpen, setConfirm, title }) => {
   const classes = useStyles();
 
   const handleClose = () => {
@@ -49,7 +50,7 @@ const AlertConfirm: FC<Props> = ({ open, setOpen, setConfirm }) => {
         aria-describedby="alert-dialog-description"
       >
         <DialogTitle id="alert-dialog-title" className={classes.dialogTitle}>
-          {"Are you sure you want to delete this project?"}
+          {title}
         </DialogTitle>
         <DialogContent></DialogContent>
         <DialogActions className={classes.btnSection}>

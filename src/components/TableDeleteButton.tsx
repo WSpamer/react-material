@@ -45,7 +45,12 @@ const TableDeleteButton: FC<Props> = ({ url, id, setUpdate }) => {
       >
         <DeleteIcon />
       </IconButton>
-      <AlertConfirm open={open} setOpen={setOpen} setConfirm={setConfirm} />
+      <AlertConfirm
+        open={open}
+        setOpen={setOpen}
+        setConfirm={setConfirm}
+        title={"Are you sure you want to delete this project?"}
+      />
     </div>
   );
 };

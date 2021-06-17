@@ -34,14 +34,6 @@ const TableDeleteButton: FC<Props> = ({ url, id, setUpdate }) => {
     }
   }, [confirm]);
 
-  const handleClickOpen = (id: string) => {
-    if (confirm) {
-      console.log(confirm);
-      handleDelete(id);
-    }
-    // setOpen(false);
-  };
-
   return (
     <div>
       <IconButton

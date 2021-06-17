@@ -2,20 +2,20 @@ import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
+import TableContainer from "@material-ui/core/TableContainer";
 import TableFooter from "@material-ui/core/TableFooter";
 import TableHead from "@material-ui/core/TableHead";
 import TablePagination from "@material-ui/core/TablePagination";
 import TableRow from "@material-ui/core/TableRow";
-import TableContainer from "@material-ui/core/TableContainer";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import React, { useEffect, useState } from "react";
+import DialogProjectCreate from "./DialogProjectCreate";
+import SearchField from "./SearchField";
 import TableDeleteButton from "./TableDeleteButton";
 import TableEditButton from "./TableEditButton";
 import TablePaginationActions from "./TablePaginationActions";
 import TableProjectsMenu from "./TableProjectsMenu";
-import SearchField from "./SearchField";
-import DialogProjectCreate from "./DialogProjectCreate";
 
 interface Props {
   // rows: Array<{
@@ -34,7 +34,7 @@ interface Props {
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     table: {
-      minWidth: 600,
+      minWidth: 200,
     },
     cellBtn: {
       maxWidth: 50,
@@ -61,7 +61,7 @@ export default function TableProjects({ url }: Props) {
   const [rows, setRows] = useState([]);
   const [update, setUpdate] = useState(false);
   const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(10);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
   const [search, setSearch] = useState(rows);
 
   const emptyRows =

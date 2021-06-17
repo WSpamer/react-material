@@ -1,4 +1,4 @@
-import { Container, Paper } from "@material-ui/core";
+import { Container } from "@material-ui/core";
 import blue from "@material-ui/core/colors/blue";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -16,18 +16,16 @@ const App = () => {
   return (
     <Router>
       <ThemeProvider theme={theme}>
-        <Paper variant="outlined" style={{ textAlign: "center" }}>
-          <Paper>
-            <Navbar />
-            <Container>
-              <Switch>
-                <Route path="/">
-                  <Projects />
-                </Route>
-              </Switch>
-            </Container>
-          </Paper>
-        </Paper>
+        <div style={{ textAlign: "center" }}>
+          <Navbar />
+          <Container>
+            <Switch>
+              <Route path="/">
+                <Projects />
+              </Route>
+            </Switch>
+          </Container>
+        </div>
       </ThemeProvider>
     </Router>
   );

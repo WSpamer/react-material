@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 
 interface Props {
@@ -31,7 +31,7 @@ export const useFetchHook = ({ url }: Props) => {
     getData();
 
     return () => controller.abort()
-  }, [])
+  }, [url])
 
   return [result, error, isLoading]
 };

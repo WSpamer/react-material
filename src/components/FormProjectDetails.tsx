@@ -14,11 +14,6 @@ interface FormValues {
   designType: string;
 }
 
-interface SelectValues {
-  label: string;
-  value: string;
-}
-
 const designTypes = [
   { label: "Platdak", value: "Platdak" },
   { label: "Gen 4", value: "Gen 4" },

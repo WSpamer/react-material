@@ -1,0 +1,28 @@
+{
+  "projects": [
+    {
+      "id": "2",
+      "projectName": "Ludzville N2",
+      "companyName": "Verdun",
+      "site": "Ludzville",
+      "areaManager": "Herman",
+      "designType": "Platdak"
+    },
+    {
+      "id": "3",
+      "projectName": "Ludzville N3",
+      "companyName": "Verdun",
+      "site": "Ludzville",
+      "areaManager": "Herman",
+      "designType": "Gen 4"
+    },
+    {
+      "projectName": "john",
+      "companyName": "Tomatoe",
+      "site": "Ludzville",
+      "areaManager": "Herman",
+      "designType": "Gen 4",
+      "id": "DE9R424"
+    }
+  ]
+}

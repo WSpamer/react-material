@@ -1,42 +1,33 @@
-import Header from "./components/Header";
-import Projects from "./components/Projects";
-
-
-import { Container, Paper, Typography } from "@material-ui/core";
-import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
+import { Container } from "@material-ui/core";
 import blue from "@material-ui/core/colors/blue";
+import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Projects from "./pages/Projects";
 
 const App = () => {
   const theme = createMuiTheme({
     palette: {
       primary: blue,
-      type: "light",
+      type: "dark",
     },
   });
 
-  
   return (
-    <ThemeProvider theme={theme}>
-      <div style={{ textAlign: "center" }}>
-      <Paper>
-        <Header />
-
-        <Container >
-          <Typography
-            variant="h2"
-            component="h2"
-            gutterBottom
-            align="center"
-            // className="section-header"
-          >
-            Projects
-          </Typography>
-          
-        <Projects />
-        </Container>
-      </Paper>
-      </div>
-    </ThemeProvider>
+    <Router>
+      <ThemeProvider theme={theme}>
+        <div style={{ textAlign: "center" }}>
+          <Navbar />
+          <Container>
+            <Switch>
+              <Route path="/">
+                <Projects />
+              </Route>
+            </Switch>
+          </Container>
+        </div>
+      </ThemeProvider>
+    </Router>
   );
 };
 

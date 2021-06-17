@@ -10,24 +10,14 @@ import TableRow from "@material-ui/core/TableRow";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import React, { useEffect, useState } from "react";
-import DialogProjectCreate from "./DialogProjectCreate";
-import SearchField from "./SearchField";
+import DialogProjectCreate from "../DialogProjectCreate";
+import SearchField from "../SearchField";
 import TableDeleteButton from "./TableDeleteButton";
 import TableEditButton from "./TableEditButton";
 import TablePaginationActions from "./TablePaginationActions";
 import TableProjectsMenu from "./TableProjectsMenu";
 
 interface Props {
-  // rows: Array<{
-  //   id: string;
-  //   projectName: string;
-  //   companyName: string;
-  //   site: string;
-  //   areaManager: string;
-  //   designType: string;
-  // }>;
-  // onUpdate: (update: boolean) => void;
-  // IsUpdated: boolean;
   url: string;
 }
 

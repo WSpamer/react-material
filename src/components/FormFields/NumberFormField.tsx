@@ -5,13 +5,14 @@ import React from "react";
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     textField: {
+      width: "70%",
       marginRight: "auto",
       marginLeft: "auto",
     },
   })
 );
 
-export const TextFormField: React.FC<FieldProps> = ({
+export const NumberFormField: React.FC<FieldProps> = ({
   field,
   form,
   ...props
@@ -23,9 +24,8 @@ export const TextFormField: React.FC<FieldProps> = ({
   return (
     <TextField
       className={classes.textField}
-      fullWidth
-      margin="normal"
       variant="outlined"
+      size="small"
       helperText={errorText}
       error={!!errorText}
       {...field}

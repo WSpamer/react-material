@@ -4,6 +4,7 @@ import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Projects from "./pages/Projects";
+import ProjectForm from "./pages/ProjectForm";
 
 const App = () => {
   const theme = createMuiTheme({
@@ -20,8 +21,11 @@ const App = () => {
           <Navbar />
           <Container>
             <Switch>
-              <Route path="/">
+              <Route path="/projects">
                 <Projects />
+              </Route>
+              <Route exact path="/">
+                <ProjectForm />
               </Route>
             </Switch>
           </Container>

@@ -29,13 +29,18 @@ const StyledMenu = withStyles({
   />
 ));
 
+const minIconWidth: number = 40;
 const StyledMenuItem = withStyles((theme) => ({
   root: {
     "&:focus": {
       backgroundColor: theme.palette.primary.main,
+
       "& .MuiListItemIcon-root, & .MuiListItemText-primary": {
         color: theme.palette.common.white,
       },
+    },
+    "& .MuiListItemIcon-root": {
+      minWidth: `${minIconWidth}px`,
     },
   },
 }))(MenuItem);
@@ -72,18 +77,6 @@ function TableProjectsMenu() {
             <SendIcon fontSize="small" />
           </ListItemIcon>
           <ListItemText primary="Sent mail" />
-        </StyledMenuItem>
-        <StyledMenuItem>
-          <ListItemIcon>
-            <DraftsIcon fontSize="small" />
-          </ListItemIcon>
-          <ListItemText primary="Drafts" />
-        </StyledMenuItem>
-        <StyledMenuItem>
-          <ListItemIcon>
-            <InboxIcon fontSize="small" />
-          </ListItemIcon>
-          <ListItemText primary="Inbox" />
         </StyledMenuItem>
       </StyledMenu>
     </div>

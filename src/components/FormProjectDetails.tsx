@@ -1,10 +1,24 @@
-import { Button, DialogActions } from "@material-ui/core";
+import {
+  Button,
+  createStyles,
+  DialogActions,
+  makeStyles,
+  Theme,
+} from "@material-ui/core";
 import { Field, Form, Formik } from "formik";
 import React, { FC } from "react";
 import * as yup from "yup";
+import DialogButton from "./DialogButton";
 import { SelectFormField } from "./FormFields/SelectFormField";
 import { TextFormField } from "./FormFields/TextFormField";
-import FormFieldText from "./FormFieldText";
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    form: {
+      display: "grid",
+    },
+  })
+);
 
 interface FormValues {
   projectName: string;
@@ -34,6 +48,7 @@ let FormSchema = yup.object().shape({
   areaManager: yup.string().required(),
   designType: yup.string().required(),
 });
+
 interface Props {
   onSubmit: (values: FormValues) => void;
   handleClose: () => void;
@@ -41,17 +56,18 @@ interface Props {
 }
 
 const FormProjectDetails: FC<Props> = ({ onSubmit, handleClose, data }) => {
+  const classes = useStyles();
   return (
     <div>
       <Formik
         initialValues={data ? data : initialValues}
-        validationSchema={FormSchema}
+        // validationSchema={FormSchema}
         onSubmit={(values: FormValues, { validateField }) => {
           onSubmit(values);
         }}
       >
         {({ values }) => (
-          <Form className="grid-form">
+          <Form className={classes.form}>
             <Field
               name="projectName"
               label="Project Name"
@@ -60,13 +76,18 @@ const FormProjectDetails: FC<Props> = ({ onSubmit, handleClose, data }) => {
             <Field
               name="companyName"
               label="Company"
-              component={FormFieldText}
+              component={TextFormField}
             />
-            <Field name="site" label="Site" component={FormFieldText} />
+            <Field
+              name="site"
+              label="Site"
+              variant="outlined"
+              component={TextFormField}
+            />
             <Field
               name="areaManager"
               label="Area Manager"
-              component={FormFieldText}
+              component={TextFormField}
             />
             <Field
               name="designType"
@@ -74,14 +95,7 @@ const FormProjectDetails: FC<Props> = ({ onSubmit, handleClose, data }) => {
               options={designTypes}
               component={SelectFormField}
             />
-            <DialogActions>
-              <Button onClick={handleClose} color="primary">
-                Cancel
-              </Button>
-              <Button onClick={handleClose} type="submit" color="primary">
-                Submit
-              </Button>
-            </DialogActions>
+            <DialogButton handleClose={handleClose} />
           </Form>
         )}
       </Formik>

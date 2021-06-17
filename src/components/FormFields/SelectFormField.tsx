@@ -20,8 +20,8 @@ export const SelectFormField: React.FC<
       <TextField
         label={label}
         select
-        fullWidth
         variant="outlined"
+        margin="normal"
         {...field}
         {...props}
       >

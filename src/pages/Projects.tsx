@@ -1,6 +1,6 @@
 import Paper from "@material-ui/core/Paper";
 import React from "react";
-import TableProjects from "../components/TableProjects";
+import TableProjects from "../components/Table/TableProjects";
 
 function Projects() {
   const url = "http://localhost:8000/projects";

@@ -1,7 +1,7 @@
 import { IconButton } from "@material-ui/core";
 import DeleteIcon from "@material-ui/icons/Delete";
 import React, { FC, useEffect, useState } from "react";
-import AlertConfirm from "./AlertConfirm";
+import AlertConfirm from "../AlertConfirm";
 
 interface Props {
   url?: string;

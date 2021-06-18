@@ -15,16 +15,17 @@ interface Values {
 interface Props {
   onSubmit: (values: Values) => void;
   data?: Values;
-  setOpen: (state: boolean) => void;
+  handleClose: () => void;
   open: boolean;
 }
 
-const DialogProjectEdit: FC<Props> = ({ onSubmit, data, open, setOpen }) => {
+const DialogProjectEdit: FC<Props> = ({
+  onSubmit,
+  data,
+  open,
+  handleClose,
+}) => {
   // const [open, setOpen] = React.useState(openState);
-
-  const handleClose = () => {
-    setOpen(false);
-  };
 
   return (
     <div>

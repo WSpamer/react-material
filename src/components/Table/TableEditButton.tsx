@@ -3,6 +3,10 @@ import EditIcon from "@material-ui/icons/Edit";
 import React, { FC, useState } from "react";
 import DialogProjectEdit from "../DialogProjectEdit";
 
+const ACTIONS = {
+  UPDATE_RECORD: "update-record",
+};
+
 interface Props {
   url?: string;
   id?: string;
@@ -51,7 +55,7 @@ const TableEditButton: FC<Props> = ({ url, id, setUpdate }) => {
           setUpdate(true);
         }}
         open={open}
-        setOpen={setOpen}
+        handleClose={() => setOpen(false)}
         data={data}
       />
     </div>

@@ -1,4 +1,4 @@
-import { Container, makeStyles } from "@material-ui/core";
+import { Container, CssBaseline, makeStyles } from "@material-ui/core";
 import React from "react";
 import Navbar from "../components/Navbar";
 import TableProjects from "../components/Table/TableProjects";
@@ -42,7 +42,8 @@ function Projects() {
 
   return (
     <div>
-      <Navbar />
+      <Navbar title={"Projects"} />
+      <CssBaseline />
       <Container maxWidth="md" className={classes.container}>
         <ProjectsContext.Provider value={data}>
           <TableProjects url={url} />

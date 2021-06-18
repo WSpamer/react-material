@@ -43,16 +43,19 @@ const useStyles = makeStyles((theme) => ({
     overflow: "auto",
     flexDirection: "column",
   },
+  title: {
+    flexGrow: 1,
+  },
 }));
 interface Props {
-  handleDrawerClose: () => void;
+  handleDrawerClick: () => void;
   open: boolean;
 }
-const Sidebar: FC<Props> = ({ open, handleDrawerClose }) => {
+const Sidebar: FC<Props> = ({ open, handleDrawerClick, children }) => {
   const classes = useStyles();
 
   return (
-    <div>
+    <>
       <Drawer
         variant="permanent"
         classes={{
@@ -61,16 +64,14 @@ const Sidebar: FC<Props> = ({ open, handleDrawerClose }) => {
         open={open}
       >
         <div className={classes.toolbarIcon}>
-          <IconButton onClick={handleDrawerClose}>
+          <IconButton onClick={handleDrawerClick}>
             <ChevronLeftIcon />
           </IconButton>
         </div>
         <Divider />
-        {/* <List>{mainListItems}</List> */}
-        <Divider />
-        {/* <List>{secondaryListItems}</List> */}
       </Drawer>
-    </div>
+      {children}
+    </>
   );
 };
 

@@ -1,5 +1,4 @@
 import AppBar from "@material-ui/core/AppBar";
-import Badge from "@material-ui/core/Badge";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -11,10 +10,10 @@ import { makeStyles } from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import MenuIcon from "@material-ui/icons/Menu";
-import NotificationsIcon from "@material-ui/icons/Notifications";
 import clsx from "clsx";
 import React from "react";
 import Sidebar from "../components/Sidebar";
+import TableProjects from "../components/Table/TableProjects";
 
 const Copyright = () => {
   return (
@@ -94,12 +93,10 @@ const useStyles = makeStyles((theme) => ({
 export default function ProjectStatus() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
+  const url = "http://localhost:8000/projects";
 
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
-  const handleDrawerClose = () => {
-    setOpen(false);
+  const handleDrawerClick = () => {
+    setOpen(!open);
   };
 
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
@@ -116,7 +113,7 @@ export default function ProjectStatus() {
             edge="start"
             color="inherit"
             aria-label="open drawer"
-            onClick={handleDrawerOpen}
+            onClick={handleDrawerClick}
             className={clsx(
               classes.menuButton,
               open && classes.menuButtonHidden
@@ -133,21 +130,15 @@ export default function ProjectStatus() {
           >
             Dashboard
           </Typography>
-          <IconButton color="inherit">
-            <Badge badgeContent={4} color="secondary">
-              <NotificationsIcon />
-            </Badge>
-          </IconButton>
         </Toolbar>
       </AppBar>
-      <Sidebar open={open} handleDrawerClose={handleDrawerClose} />
+      <Sidebar open={open} handleDrawerClick={handleDrawerClick}></Sidebar>
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
           <Grid container spacing={3}>
-            {/* Chart */}
             <Grid item xs={12} md={8} lg={9}>
-              <Paper className={fixedHeightPaper}>{/* <Chart /> */}</Paper>
+              <Paper className={fixedHeightPaper}></Paper>
             </Grid>
             {/* Recent Deposits */}
             <Grid item xs={12} md={4} lg={3}>
@@ -155,7 +146,8 @@ export default function ProjectStatus() {
             </Grid>
             {/* Recent Orders */}
             <Grid item xs={12}>
-              <Paper className={classes.paper}>{/* <Orders /> */}</Paper>
+              {" "}
+              <TableProjects url={url} />
             </Grid>
           </Grid>
           <Box pt={4}>

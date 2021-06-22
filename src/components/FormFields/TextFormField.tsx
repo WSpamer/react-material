@@ -22,7 +22,6 @@ export const TextFormField: React.FC<FieldProps> = ({
 
   return (
     <TextField
-      className={classes.textField}
       fullWidth
       margin="normal"
       variant="outlined"

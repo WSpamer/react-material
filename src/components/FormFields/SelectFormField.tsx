@@ -16,7 +16,7 @@ export const SelectFormField: React.FC<
   const errorText =
     getIn(form.touched, field.name) && getIn(form.errors, field.name);
   return (
-    <FormControl fullWidth error={!!errorText}>
+    <FormControl error={!!errorText}>
       <TextField
         label={label}
         select

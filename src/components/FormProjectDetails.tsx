@@ -1,10 +1,4 @@
-import {
-  Button,
-  createStyles,
-  DialogActions,
-  makeStyles,
-  Theme,
-} from "@material-ui/core";
+import { createStyles, makeStyles, Theme } from "@material-ui/core";
 import { Field, Form, Formik } from "formik";
 import React, { FC } from "react";
 import * as yup from "yup";
@@ -78,12 +72,7 @@ const FormProjectDetails: FC<Props> = ({ onSubmit, handleClose, data }) => {
               label="Company"
               component={TextFormField}
             />
-            <Field
-              name="site"
-              label="Site"
-              variant="outlined"
-              component={TextFormField}
-            />
+            <Field name="site" label="Site" component={TextFormField} />
             <Field
               name="areaManager"
               label="Area Manager"
